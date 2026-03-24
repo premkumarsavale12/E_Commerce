@@ -1,36 +1,33 @@
-
 const express = require("express");
-
 const router = express.Router();
 
-const Hero = require('../model/hero_section');
- 
-// for get all 
+const footer = require("../model/footerSchema")
+
+// for all 
+
 router.get("/all", async (req, res) => {
 
     try {
 
-        const hero = await Hero.find(); 
-        res.json(hero);
-
+        const data = await footer.find();
+        res.json(data);
     }
 
     catch (err) {
-
         res.status(500).json({ message: err.message });
 
     }
 
 });
 
-// for get id 
+//for id 
 
 router.get("/:id", async (req, res) => {
 
     try {
 
-        const hero = await Hero.findById(req.params.id);
-        res.json(hero);
+        const data = await footer.findById(req.params.id);
+        res.json(data);
 
     }
 
@@ -38,43 +35,35 @@ router.get("/:id", async (req, res) => {
 
         res.status(500).json({ message: err.message });
 
-
     }
 
+})
 
-});
-
-//  for post  
 router.post("/add", async (req, res) => {
 
     try {
 
-        const herodata = await Hero.create(req.body);
+        const footerdata = await footer.create(req.body);
 
-        res.status(201).json(herodata);
+        res.status(201).json(footerdata);
 
     }
-
     catch (err) {
 
-        console.log(err);
+        console.log(err)
         res.status(500).json({ message: err.message });
 
     }
 
 });
-
-
-// for delete 
 
 router.delete("/:id", async (req, res) => {
-
     try {
-        
-        const deletedata = await Hero.findByIdAndDelete(req.params.id);
-        res.json({ message: "Deleted SuccessFully... " })
 
-        if (!deletedata) return res.status(404).json({ message: " not Found " });
+        const deletedata = await footer.findByIdAndDelete(req.params.id);
+        res.json({ message: "Deleted SuccessFully...." });
+
+        if (!deletedata) return res.status(404).json({ message: "Not Found" });
 
     }
 
@@ -85,20 +74,16 @@ router.delete("/:id", async (req, res) => {
     }
 
 });
-
-
-// for update 
 
 router.put("/:id", async (req, res) => {
 
     try {
-
-        const updateddata = await Hero.findByIdAndUpdate(
-
+        const updateddata = await footer.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
+
         if (!updateddata) return res.status(404).json({ message: "Not Found" })
         res.json(updateddata);
 
@@ -112,5 +97,6 @@ router.put("/:id", async (req, res) => {
     }
 
 })
+
 
 module.exports = router;

@@ -2,6 +2,8 @@ import React from 'react'
 import Navbar from '../component/Navbar'
 import Hero_Section from './Hero_Section'
 import Seller_Product from './Seller_Product'
+import Footer from './Footer'
+
 
 const Home = () => {
     return (
@@ -11,7 +13,10 @@ const Home = () => {
 
             <Hero_Section />
 
-            <Seller_Product />
+            <Seller_Product /> 
+             
+              <Footer />
+               
 
 
         </>
