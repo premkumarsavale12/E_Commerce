@@ -8,7 +8,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const User = require("../model/user");
-const user = require("../model/user");
 
 // signUp 
 
@@ -32,7 +31,7 @@ router.post("/signup", async (req, res) => {
 
         await user.save();
 
-        res.status(201).json({ mesage: "Signup Successfully " })
+        res.status(201).json({ message: "Signup Successfully " })
 
     }
     catch (err) {
@@ -52,7 +51,7 @@ router.post("/login", async (req, res) => {
         const user = await User.findOne({ email })
 
         if (!user) {
-            return res.status(404).json({ mesage: "User Not Found" });
+            return res.status(404).json({ message: "User Not Found" });
 
         }
 
@@ -70,7 +69,7 @@ router.post("/login", async (req, res) => {
         );
 
         res.status(200).json({
-            mesage: "Login Sucessful",
+            message: "Login Sucessful",
             token
         })
 
@@ -89,7 +88,7 @@ router.get("/all", async (req, res) => {
 
     try {
 
-        const users = await user.find();
+        const users = await User.find();
 
         res.json(users);
 
