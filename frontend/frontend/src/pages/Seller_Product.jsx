@@ -12,7 +12,7 @@ const Seller_Product = () => {
     const FetchApiData = async () => {
         try {
             const res = await axios.get("http://localhost:5000/api/sellerproduct/all");
-            console.log(res.data); // check structure
+            console.log(res.data);
             setData(res.data);
         } catch (err) {
             console.log(err);
@@ -21,7 +21,6 @@ const Seller_Product = () => {
 
     return (
         <>
-        
             <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-8">
 
                 <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center sm:text-left">

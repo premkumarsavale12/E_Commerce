@@ -18,13 +18,13 @@ const Footer = () => {
             console.log(err);
         }
     };
-
+    
     if (!footer) return <p className="loading">Loading...</p>;
 
     return (
         <footer className="footer-container">
             <div className="footer-content">
-                {/* Company Section */}
+   
                 <div className="footer-section">
                     <h3 className="footer-title">{footer?.company?.title}</h3>
                     <ul className="footer-links">
@@ -34,7 +34,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Quick Links Section */}
+             
                 <div className="footer-section">
                     <h3 className="footer-title">{footer?.quickLinks?.title}</h3>
                     <ul className="footer-links">
@@ -44,7 +44,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Contact Section */}
+              
                 <div className="footer-section">
                     <h3 className="footer-title">{footer?.contact?.title}</h3>
                     <div className="contact-info">
@@ -54,7 +54,7 @@ const Footer = () => {
                         <p><a href={`mailto:${footer?.contact?.supportEmail}`} className="contact-link">{footer?.contact?.supportEmail}</a></p>
                     </div>
                     
-                    {/* Social Media Section - Inside Contact Column as per user image */}
+           
                     <div className="social-links">
                         {footer?.social?.map((item, i) => (
                             <a key={i} href={item.url} className="social-icon" target="_blank" rel="noopener noreferrer">
