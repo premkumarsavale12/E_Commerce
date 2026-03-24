@@ -61,7 +61,7 @@ const Seller_Product = () => {
 
                 </div>
             </div>
-            );
+          
         </>
     );
 };
