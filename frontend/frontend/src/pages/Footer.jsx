@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 const Footer = () => {
 
     const [footer, setFooter] = useState(null);

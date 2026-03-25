@@ -1,16 +1,15 @@
-
 const express = require("express");
 
 const router = express.Router();
 
 const Hero = require('../model/hero_section');
- 
+
 // for get all 
 router.get("/all", async (req, res) => {
 
     try {
 
-        const hero = await Hero.find(); 
+        const hero = await Hero.find();
         res.json(hero);
 
     }
@@ -70,7 +69,7 @@ router.post("/add", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 
     try {
-        
+
         const deletedata = await Hero.findByIdAndDelete(req.params.id);
         res.json({ message: "Deleted SuccessFully... " })
 
