@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <header className="w-full border-b border-gray-200 bg-white">
       <div className="max-w-[1300px] mx-auto px-6 py-4 flex items-center justify-between">
-        
+
         <button
           className="md:hidden text-xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -70,4 +70,4 @@ export default function Navbar() {
       )}
     </header>
   );
-}
+}
