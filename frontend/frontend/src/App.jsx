@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import ProtectedRoute from "./component/ProtectedRoute";
 import PublicRoute from "./component/PublicRoute";
- 
+
 
 const App = () => {
   return (
