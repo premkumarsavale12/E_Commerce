@@ -1,113 +1,65 @@
-
 const express = require("express");
-
 const router = express.Router();
+const Seller = require("../model/sellerproduct");
+const auth = require('../middleware/authMiddleware'); // Import middleware
 
-const Seller = require("../model/sellerproduct")
-
-//for get all 
-
+//for get all (Public)
 router.get("/all", async (req, res) => {
-
     try {
-
         const data = await Seller.find();
-
         res.json(data);
-
-    }
-
-    catch (err) {
-
+    } catch (err) {
         res.status(500).json({ message: err.message });
-
     }
-
 });
 
-// for get id :
-
+// for get id (Public)
 router.get("/:id", async (req, res) => {
-
     try {
-
         const data = await Seller.findById(req.params.id);
         res.json(data);
-
-    }
-
-    catch (err) {
-
+    } catch (err) {
         res.status(500).json({ message: err.message });
-
     }
-
 });
 
-
-//for post 
-
-router.post("/add", async (req, res) => {
-
+//for post (Protected)
+router.post("/add", auth, async (req, res) => {
     try {
-
         const datasaved = await Seller.create(req.body);
-
         res.status(201).json(datasaved);
-
-    }
-    catch (err) {
-
+    } catch (err) {
         console.log(err);
-
         res.status(500).json({ message: err.message });
-
     }
-
 });
 
-// for delete 
-router.delete("/:id", async (req, res) => {
-
+// for delete (Protected)
+router.delete("/:id", auth, async (req, res) => {
     try {
         const deletedata = await Seller.findByIdAndDelete(req.params.id);
+        if (!deletedata) return res.status(404).json({ message: "Not Found" });
         res.json({ message: "Delete SuccessFully...." });
-        if (!deletedata) return res.status(404).json({ message: " not Found " });
-    }
-
-    catch (err) {
-
-
+    } catch (err) {
         res.status(500).json({ message: err.message });
-
     }
-})
+});
 
-
-// for updated  
-
-router.put("/:id", async (req, res) => {
-
+// for update (Protected)
+router.put("/:id", auth, async (req, res) => {
     try {
-
         const updatedData = await Seller.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
-        if (!updatedData) return res.status(404).json({ message: "Not Found" })
+        if (!updatedData) return res.status(404).json({ message: "Not Found" });
         res.json(updatedData);
-
-    }
-
-    catch (err) {
+    } catch (err) {
         console.log(err);
         res.status(500).json({ message: err.message });
-
     }
-
-})
-
+});
 
 module.exports = router;
- 
+

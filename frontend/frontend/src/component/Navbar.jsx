@@ -1,15 +1,21 @@
 // Navbar.jsx
 import { useState } from "react";
-import { FaBars, FaTimes, FaRegStar, FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaTimes, FaRegStar, FaSearch, FaUser, FaShoppingCart, FaSignOutAlt } from "react-icons/fa"; // Added FaSignOutAlt
+import { useNavigate } from "react-router-dom"; // Added useNavigate
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <header className="w-full border-b border-gray-200 bg-white">
       <div className="max-w-[1300px] mx-auto px-6 py-4 flex items-center justify-between">
-
-
+        
         <button
           className="md:hidden text-xl"
           onClick={() => setIsOpen(!isOpen)}
@@ -21,7 +27,6 @@ export default function Navbar() {
           Minimalist
         </h1>
 
-
         <nav className="hidden md:flex items-center gap-7 text-[14px] font-medium">
           <a href="#" className="hover:text-gray-500">Shop</a>
           <a href="#" className="hover:text-gray-500">Best Sellers</a>
@@ -32,12 +37,13 @@ export default function Navbar() {
           <a href="#" className="hover:text-gray-500">Track Order</a>
         </nav>
 
-
         <div className="flex items-center gap-4 md:gap-5 text-lg">
           <FaRegStar className="hidden md:block cursor-pointer" />
           <FaSearch className="cursor-pointer" />
-          <FaUser className="cursor-pointer" />
+          <FaUser className="cursor-pointer" title="Profile" />
 
+          {/* Added Logout Icon */}
+          <FaSignOutAlt className="cursor-pointer" onClick={handleLogout} title="Logout" />
 
           <div className="relative cursor-pointer">
             <FaShoppingCart />
@@ -48,7 +54,6 @@ export default function Navbar() {
         </div>
       </div>
 
-
       {isOpen && (
         <div className="md:hidden px-6 pb-4 flex flex-col gap-4 text-sm font-medium">
           <a href="#">Shop</a>
@@ -58,8 +63,11 @@ export default function Navbar() {
           <a href="#">Hair Care</a>
           <a href="#">AI Assistants</a>
           <a href="#">Track Order</a>
+          <button onClick={handleLogout} className="flex items-center gap-2 text-left hover:text-red-600 transition-colors">
+            <FaSignOutAlt /> Logout
+          </button>
         </div>
       )}
     </header>
   );
-}
+}
