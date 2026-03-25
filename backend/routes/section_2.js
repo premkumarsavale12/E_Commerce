@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const Section = require("../model/section_1");
+const Section = require("../model/section_2");
 
 // for all 
 
@@ -92,8 +92,9 @@ router.put("\:id", async (req, res) => {
             req.params.id,
             red.body,
             { new: true }
-        );
-         if (!updateddata) return res.status(404).json({ message: "NOT fOUND.." });
+        )
+      
+        if (!updateddata) return res.status(404).json({ message: "NOT fOUND.." });
 
     }
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-const Section_1 = () => {
+const Section_2 = () => {
 
     const [data, setData] = useState([]);
 
@@ -15,11 +15,12 @@ const Section_1 = () => {
 
         try {
 
-            const res = await axios.get("http://localhost:5000/api/section_1/all");
+            const res = await axios.get("http://localhost:5000/api/section_2/all");
 
             console.log(res.data);
 
             setData(res.data);
+
 
         }
 
@@ -32,7 +33,10 @@ const Section_1 = () => {
 
         <>
             <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-8">
-     {
+
+         
+
+                    {
 
                         data.map((item, index) => {
                             console.log(item);
@@ -56,4 +60,4 @@ const Section_1 = () => {
     )
 }
 
-export default Section_1
+export default Section_2
