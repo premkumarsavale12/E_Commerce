@@ -1,9 +1,6 @@
-
 const mongoose = require("mongoose");
 
-
 const SellerProduct = new mongoose.Schema({
-
 
     Image: {
         type: String,
@@ -31,4 +28,3 @@ const SellerProduct = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("Seller", SellerProduct);
-
