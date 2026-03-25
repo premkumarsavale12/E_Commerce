@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import ProtectedRoute from "./component/ProtectedRoute";
 import PublicRoute from "./component/PublicRoute";
+import Shop from "./pages/Shop";
 
 
 const App = () => {
@@ -22,6 +23,14 @@ const App = () => {
         element={
           <ProtectedRoute>
             <Home />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/shop"
+        element={
+          <ProtectedRoute>
+            <Shop />
           </ProtectedRoute>
         }
       />

@@ -1,0 +1,62 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Navbar from "../component/Navbar";
+import Footer from "./Footer";
+
+const Shop = () => { 
+    
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        FetchApiData();
+    }, []);
+
+    const FetchApiData = async () => {
+        try {
+            const res = await axios.get("http://localhost:5000/api/shop/all");
+            console.log("API Response:", res.data);
+            setData(res.data);
+        } catch (err) {
+            console.error("Error fetching shop data:", err);
+        }
+    };
+
+    return (
+        <div className="min-h-screen bg-white">
+            <Navbar />
+            
+            <main className="max-w-[1300px] mx-auto px-6 py-12">
+                <h1 className="text-3xl font-semibold mb-10 tracking-tight">
+                    Collections
+                </h1>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+                    {data.length > 0 ? (
+                        data.map((item, index) => (
+                            <div key={index} className="group cursor-pointer">
+                                <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-4">
+                                    <img
+                                        src={item.Image}
+                                        alt={item.Image_Name}
+                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                </div>
+                                <h3 className="text-[15px] font-medium text-center text-gray-800 group-hover:text-gray-600 transition-colors">
+                                    {item.Image_Name}
+                                </h3>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="col-span-full py-20 text-center text-gray-400">
+                             No products found in collections.
+                        </div>
+                    )}
+                </div>
+            </main>
+
+            <Footer />
+        </div>
+    );
+};
+
+export default Shop;
