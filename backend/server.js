@@ -8,6 +8,7 @@ const connectDb = require("./config/db");
 const herosectionRoutes = require("./routes/herosection");
 const sellerRoutes = require("./routes/sellerProduct");
 const footerRoute = require("./routes/footersection")
+const section_1 = require("./routes/section_1")
 
 const app = express();
 
@@ -23,8 +24,9 @@ app.use("/api/hero_section", herosectionRoutes);
 
 app.use("/api/sellerproduct", sellerRoutes);
 
-
 app.use("/api/footersection", footerRoute);
+
+app.use("/api/section_1", section_1);
 
 app.listen(5000, () => {
     console.log("Server Running on port 5000");

@@ -3,6 +3,7 @@ const router = express.Router();
 const Hero = require('../model/hero_section');
 const auth = require('../middleware/authMiddleware'); // Import middleware
 
+
 // for get all (Public)
 router.get("/all", async (req, res) => {
     try {
