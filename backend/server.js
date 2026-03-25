@@ -9,7 +9,8 @@ const herosectionRoutes = require("./routes/herosection");
 const sellerRoutes = require("./routes/sellerProduct");
 const footerRoute = require("./routes/footersection")
 const section_1 = require("./routes/section_1")
-
+const section_2 = require("./routes/section_2")
+const new_launch = require("./routes/new_launch");
 const app = express();
 
 connectDb();
@@ -27,6 +28,10 @@ app.use("/api/sellerproduct", sellerRoutes);
 app.use("/api/footersection", footerRoute);
 
 app.use("/api/section_1", section_1);
+
+app.use("/api/section_2", section_2);
+
+app.use("/api/new_launch", new_launch);
 
 app.listen(5000, () => {
     console.log("Server Running on port 5000");
