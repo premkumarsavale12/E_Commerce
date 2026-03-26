@@ -18,9 +18,9 @@ const Home = () => {
 
             <Seller_Product />
 
+            <Section_1 />
             <Section_2 />
 
-            <Section_1 />
 
             <New_Launch />
 
