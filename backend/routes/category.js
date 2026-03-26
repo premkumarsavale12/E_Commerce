@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
 
-
     }
 })
 
@@ -32,7 +31,6 @@ router.get("/all", async (req, res) => {
         console.log(err);
         res.status(500).json({ message: err.message })
     }
-
 })
 
 // for id 
