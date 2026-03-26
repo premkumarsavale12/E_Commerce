@@ -4,6 +4,10 @@ const Category = new mongoose.Schema({
 
     Image: {
         type: String
+    },
+
+    Text: {
+        type: String
     }
 })
 

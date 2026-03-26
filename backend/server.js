@@ -47,7 +47,7 @@ app.use("/api/new_launch", new_launch);
 
 app.use("/api/shop", Shop);
 
-app.use("/api/section", Category);
+app.use("/api/category", Category);
 
 
 app.listen(5000, () => {

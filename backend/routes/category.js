@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // for get all
-router.get("/all ", async (req, res) => {
+router.get("/all", async (req, res) => {
 
     try {
         const data = await Category.find()
@@ -37,14 +37,13 @@ router.get("/all ", async (req, res) => {
 
 // for id 
 
-router.get("/:id ", async (req, res) => {
+router.get("/:id", async (req, res) => {
 
     try {
         const data = await Category.findById(req.params.id);
         res.json(data);
 
     }
-
     catch (err) {
         console.log(err);
         res.status(500).json({ message: err.message });
@@ -52,19 +51,15 @@ router.get("/:id ", async (req, res) => {
     }
 });
 
-
 // for add data 
 
 router.post("/add", upload.single("Image"), async (req, res) => {
 
     try {
         const savedata = await Category.create({
-            Heading: req.body.Heading,
-            Sub_Heading: req.body.Sub_Heading,
-            Description: req.body.Description,
-            Sub_Description: req.body.Sub_Description,
-            Button: req.body.Button,
-            Image: req.file ? req.file.filename : null
+
+            Image: req.file ? req.file.filename : null,
+            Text: req.body.Text,
         });
 
         res.status(201).json(savedata);
@@ -75,8 +70,7 @@ router.post("/add", upload.single("Image"), async (req, res) => {
 
     }
 
-})
-
+});
 
 // for delete
 
@@ -86,9 +80,7 @@ router.delete("/:id", async (req, res) => {
     if (!deletedata) {
         return res.status(404).json({ message: "Not Found" });
     }
-
     res.json({ message: "Deleted SuccessFully..." });
-
 
 });
 
@@ -101,11 +93,7 @@ router.put("/:id ", upload.single("Image"), async (req, res) => {
 
             req.params.id,
             {
-                Heading: req.body.Heading,
-                Sub_Heading: req.body.Sub_Heading,
-                Description: req.body.Description,
-                Sub_Description: req.body.Sub_Description,
-                Button: req.body.Button,
+                Text: req.body.Text,
                 ...(req.file && { Image: req.file.filename })
             },
             { new: true }
@@ -117,11 +105,10 @@ router.put("/:id ", upload.single("Image"), async (req, res) => {
         res.json(updateddata);
     }
     catch (err) {
-            res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message });
 
 
     }
 })
 
- module.exports = router;
-  
+module.exports = router;
