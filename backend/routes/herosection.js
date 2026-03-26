@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// for get all (Public)
+
 router.get("/all", async (req, res) => {
     try {
         const hero = await Hero.find();
@@ -26,7 +26,7 @@ router.get("/all", async (req, res) => {
     }
 });
 
-// for get id (Public)
+
 router.get("/:id", async (req, res) => {
     try {
         const hero = await Hero.findById(req.params.id);
@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-// for post (Protected)
+
 router.post("/add", auth, upload.single("Image"), async (req, res) => {
     try {
         const herodata = await Hero.create({
@@ -55,7 +55,6 @@ router.post("/add", auth, upload.single("Image"), async (req, res) => {
     }
 });
 
-// for delete (Protected)
 router.delete("/:id", auth, async (req, res) => {
     try {
         const deletedata = await Hero.findByIdAndDelete(req.params.id);
@@ -66,7 +65,7 @@ router.delete("/:id", auth, async (req, res) => {
     }
 });
 
-// for update (Protected)
+
 router.put("/:id", auth, async (req, res) => {
     try {
         const updateddata = await Hero.findByIdAndUpdate(
