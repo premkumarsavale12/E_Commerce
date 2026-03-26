@@ -6,6 +6,7 @@ import Footer from './Footer'
 import Section_1 from './Section_1'
 import Section_2 from './Section_2'
 import New_Launch from './New_Launch'
+import Category from './Category'
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const Home = () => {
             <Section_1 />
             <Section_2 />
 
+            <Category />
 
             <New_Launch />
 

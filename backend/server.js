@@ -15,6 +15,7 @@ const section_2 = require("./routes/section_2")
 const new_launch = require("./routes/new_launch");
 const Shop = require("./routes/shop")
 const Category = require("./routes/category")
+const Concern = require("./routes/concern")
 const app = express();
 
 connectDb();
@@ -47,7 +48,9 @@ app.use("/api/new_launch", new_launch);
 
 app.use("/api/shop", Shop);
 
-app.use("/api/section", Category);
+app.use("/api/category", Category);
+
+app.use("/api/concern", Concern);
 
 
 app.listen(5000, () => {

@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Category = require("../model/Category");
+// const Category = require("../model/Category");
+ const Concerns = require("../model/concern");
+  
 const multer = require("multer");
 
 //multer setup 
@@ -22,7 +24,7 @@ const upload = multer({ storage: storage });
 router.get("/all", async (req, res) => {
 
     try {
-        const data = await Category.find()
+        const data = await Concerns.find()
         res.json(data);
 
     }
@@ -38,7 +40,7 @@ router.get("/all", async (req, res) => {
 router.get("/:id", async (req, res) => {
 
     try {
-        const data = await Category.findById(req.params.id);
+        const data = await Concerns.findById(req.params.id);
         res.json(data);
 
     }
@@ -54,7 +56,7 @@ router.get("/:id", async (req, res) => {
 router.post("/add", upload.single("Image"), async (req, res) => {
 
     try {
-        const savedata = await Category.create({
+        const savedata = await Concerns.create({
 
             Image: req.file ? req.file.filename : null,
             Text: req.body.Text,
@@ -74,7 +76,7 @@ router.post("/add", upload.single("Image"), async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
 
-    const deletedata = await Category.findByIdAndDelete(req.params.id);
+    const deletedata = await Concerns.findByIdAndDelete(req.params.id);
     if (!deletedata) {
         return res.status(404).json({ message: "Not Found" });
     }
@@ -87,7 +89,7 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id ", upload.single("Image"), async (req, res) => {
 
     try {
-        const updateddata = await Category.findByIdAndUpdate(
+        const updateddata = await Concerns.findByIdAndUpdate(
 
             req.params.id,
             {
