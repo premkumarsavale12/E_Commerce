@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser")
+const path = require("path");
+const fs = require("fs");
 
 const connectDb = require("./config/db");
 const herosectionRoutes = require("./routes/herosection");
@@ -19,6 +21,15 @@ connectDb();
 app.use(cors());
 
 app.use(bodyParser.json());
+
+// Ensure uploads directory exists
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
+// Serve static files from the uploads directory
+app.use("/uploads", express.static(uploadDir));
 
 app.use("/api/auth", require("./routes/auth"));
 

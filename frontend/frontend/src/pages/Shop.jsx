@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import Footer from "./Footer";
 
-const Shop = () => { 
-    
+const Shop = () => {
+
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Shop = () => {
     return (
         <div className="min-h-screen bg-white">
             <Navbar />
-            
+
             <main className="max-w-[1300px] mx-auto px-6 py-12">
                 <h1 className="text-3xl font-semibold mb-10 tracking-tight">
                     Collections
@@ -48,7 +48,7 @@ const Shop = () => {
                         ))
                     ) : (
                         <div className="col-span-full py-20 text-center text-gray-400">
-                             No products found in collections.
+                            No products found in collections.
                         </div>
                     )}
                 </div>

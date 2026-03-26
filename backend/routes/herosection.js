@@ -2,7 +2,19 @@ const express = require("express");
 const router = express.Router();
 const Hero = require('../model/hero_section');
 const auth = require('../middleware/authMiddleware'); // Import middleware
+const multer = require("multer");
 
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "uploads/");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "-" + file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 // for get all (Public)
 router.get("/all", async (req, res) => {
@@ -25,9 +37,17 @@ router.get("/:id", async (req, res) => {
 });
 
 // for post (Protected)
-router.post("/add", auth, async (req, res) => {
+router.post("/add", auth, upload.single("Image"), async (req, res) => {
     try {
-        const herodata = await Hero.create(req.body);
+        const herodata = await Hero.create({
+            Heading: req.body.Heading,
+            Sub_Heading: req.body.Sub_Heading,
+            Description: req.body.Description,
+            Sub_Description: req.body.Sub_Description,
+            Button: req.body.Button,
+            Image: req.file.filename
+        });
+
         res.status(201).json(herodata);
     } catch (err) {
         console.log(err);
