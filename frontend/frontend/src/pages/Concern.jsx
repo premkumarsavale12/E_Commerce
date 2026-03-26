@@ -1,10 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-
-const Category = () => {
+const Concern = () => {
 
     const [data, setData] = useState([]);
-
 
     useEffect(() => {
         FetchApiData();
@@ -14,7 +12,7 @@ const Category = () => {
     const FetchApiData = async () => {
 
         try {
-            const res = await axios.get("http://localhost:5000/api/category/all");
+            const res = await axios.get("http://localhost:5000/api/concern/all");
             console.log(res.data);
             setData(res.data);
 
@@ -25,7 +23,7 @@ const Category = () => {
             console.log(err);
 
         }
-    }
+    } 
 
     return (
 
@@ -34,10 +32,10 @@ const Category = () => {
             <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-8">
 
                 <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-center sm:text-left">
-                    Shop by Category
+                    Shop by Concerns
                 </h2>
 
-                <div className="  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                <div className="  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-30">
                     {
 
                         data.map((item, index) => {
@@ -63,11 +61,10 @@ const Category = () => {
 
             </div>
 
-
         </>
 
     )
 
 }
 
-export default Category
+export default Concern
