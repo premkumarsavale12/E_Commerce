@@ -1,49 +1,64 @@
 const express = require("express");
 const router = express.Router();
-// const Section = require("../models/section_1");
- const Section = require("../model/section_1")
+const Category = require("../model/Category");
 const multer = require("multer");
 
-// multer setup
+//multer setup 
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, "uploads/");
+        cb(null, 'uploads/');
+
     },
     filename: function (req, file, cb) {
         cb(null, Date.now() + "-" + file.originalname);
+
+
     }
-});
+})
 
 const upload = multer({ storage: storage });
 
+// for get all
+router.get("/all ", async (req, res) => {
 
-// GET ALL
-router.get("/all", async (req, res) => {
     try {
-        const data = await Section.find();
+        const data = await Category.find()
         res.json(data);
-    } catch (err) {
+
+    }
+    catch (err) {
+
+        console.log(err);
+        res.status(500).json({ message: err.message })
+    }
+
+})
+
+// for id 
+
+router.get("/:id ", async (req, res) => {
+
+    try {
+        const data = await Category.findById(req.params.id);
+        res.json(data);
+
+    }
+
+    catch (err) {
+        console.log(err);
         res.status(500).json({ message: err.message });
+
     }
 });
 
 
-// GET BY ID
-router.get("/:id", async (req, res) => {
-    try {
-        const data = await Section.findById(req.params.id);
-        if (!data) return res.status(404).json({ message: "Not Found" });
-        res.json(data);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
+// for add data 
 
-
-//  CREATE (POST)
 router.post("/add", upload.single("Image"), async (req, res) => {
+
     try {
-        const savedata = await Section.create({
+        const savedata = await Category.create({
             Heading: req.body.Heading,
             Sub_Heading: req.body.Sub_Heading,
             Description: req.body.Description,
@@ -53,35 +68,37 @@ router.post("/add", upload.single("Image"), async (req, res) => {
         });
 
         res.status(201).json(savedata);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: err.message });
     }
-});
+    catch (err) {
+
+        res.status(500).json({ message: err.message });
+
+    }
+
+})
 
 
-// DELETE
+// for delete
+
 router.delete("/:id", async (req, res) => {
-    try {
-        const deleteddata = await Section.findByIdAndDelete(req.params.id);
 
-        if (!deleteddata) {
-            return res.status(404).json({ message: "Not Found" });
-        }
-
-        res.json({ message: "Deleted Successfully" });
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: err.message });
+    const deletedata = await Category.findByIdAndDelete(req.params.id);
+    if (!deletedata) {
+        return res.status(404).json({ message: "Not Found" });
     }
+
+    res.json({ message: "Deleted SuccessFully..." });
+
+
 });
 
+// for  update 
 
-// UPDATE (PUT)
-router.put("/:id", upload.single("Image"), async (req, res) => {
+router.put("/:id ", upload.single("Image"), async (req, res) => {
+
     try {
-        const updateddata = await Section.findByIdAndUpdate(
+        const updateddata = await Category.findByIdAndUpdate(
+
             req.params.id,
             {
                 Heading: req.body.Heading,
@@ -97,13 +114,14 @@ router.put("/:id", upload.single("Image"), async (req, res) => {
         if (!updateddata) {
             return res.status(404).json({ message: "Not Found" });
         }
-
         res.json(updateddata);
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({ message: err.message });
     }
-});
+    catch (err) {
+            res.status(500).json({ message: err.message });
 
-module.exports = router;
+
+    }
+})
+
+ module.exports = router;
+  
