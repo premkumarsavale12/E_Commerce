@@ -1,7 +1,6 @@
 
 const mongoose = require('mongoose');
 
-
 const ShopProduct = new mongoose.Schema({
     Image: {
         type: String,
