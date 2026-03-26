@@ -23,7 +23,6 @@ const Section_2 = () => {
 
 
         }
-
         catch (err) {
 
             console.log(err)
@@ -34,28 +33,54 @@ const Section_2 = () => {
         <>
             <div className="max-w-[1300px] mx-auto px-4 sm:px-6 py-8">
 
-         
+                {
 
-                    {
+                    data.map((item, index) => {
+                        console.log(item);
 
-                        data.map((item, index) => {
-                            console.log(item);
+                        return (
+                            <div key={index} className="flex items-center justify-between px-16 py-12 bg-gray-100">
 
-                            return (
-                                <div key={index}>
-                                    <img src={item.Image} alt=""
-
+                                {/* Left Image */}
+                                <div className="w-1/2 flex justify-center">
+                                    <img
+                                        src={`http://localhost:5000/uploads/${item.Image}`}
+                                        alt="skin"
+                                        className="max-w-md object-contain"
                                     />
                                 </div>
-                            );
-                        })
 
-                    }
+                                {/* Right Content */}
+                                <div className="w-1/2 text-center space-y-4">
+                                    <h1 className="text-5xl font-bold">
+                                        {item.Heading}
+                                    </h1>
 
-                </div>
+                                    <h2 className="text-2xl text-gray-700">
+                                        {item.Sub_Heading}
+                                    </h2>
 
+                                    <p className="text-gray-600 max-w-md mx-auto">
+                                        {item.Description}
+                                    </p>
 
-          
+                                    <p className="text-lg font-medium">
+                                        {item.Sub_Description}
+                                    </p>
+
+                                    <button className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-800">
+                                        {item.Button}
+                                    </button>
+                                </div>
+
+                            </div>
+                        );
+                    })
+
+                }
+
+            </div>
+
         </>
     )
 }
