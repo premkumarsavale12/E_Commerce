@@ -1,115 +1,108 @@
 
-const express = require("express")
 
+const express = require("express");
 const router = express.Router();
 
-const Shop = require("../model/shop");
+const skin = require("../model/skin");
 
-
-// for get all  
+// for get all 
 
 router.get("/all", async (req, res) => {
 
     try {
 
-        const data = await Shop.find();
-
+        const data = await skin.find();
         res.json(data);
-
     }
 
     catch (err) {
 
-        res.status(500).json({ message: err.message })
-    }
+        res.status(500).json({ message: err.message });
 
+    }
 });
 
-// for id 
-
+// for get  by id 
 
 router.get("/:id", async (req, res) => {
 
     try {
 
-        const data = await Shop.findById(req.params.id);
+        const data = await skin.findById(req.params.id);
         res.json(data);
 
     }
 
-
     catch (err) {
+
         res.status(500).json({ message: err.message });
 
-
     }
-
 });
 
-// for post 
-
-router.post("/add", async (req, res) => {
+// for add 
+router.post("/:id", async (req, res) => {
 
     try {
-        const savedata = await Shop.create(req.body);
-        res.status(201).json(savedata)
-    }
+        const savedata = await skin.create(req.body);
+        res.status(201).json(savedata);
 
+    }
     catch (err) {
         console.log(err);
+
         res.status(500).json({ message: err.message });
 
 
     }
-
 });
 
-
-// for delete 
+// for delete....
 
 router.delete("/:id", async (req, res) => {
 
     try {
 
-        const deletedata = await Shop.findByIdAndDelete(req.params.id);
+        const deletedata = await skin.findByIdAndDelete(req.params.id);
+        res.json("Deleted SuccessFully....");
 
-        if (!deletedata) return res.status(404).json({ message: "Shop item not found" })
-
-        res.json("Deleted Successfully ")
+        if (!deletedata) return res.status(404).json({ message: "Not Found item" });
     }
 
     catch (err) {
 
         console.log(err);
+
         res.status(500).json({ message: err.message });
-
     }
+})
 
-
-});
-
-// for put
+// for update  
 
 router.put("/:id", async (req, res) => {
 
-    try {
 
-        const updateddata = await Shop.findByIdAndUpdate(
+    try {
+        const updateddata = await skin.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
         );
+
         if (!updateddata) return res.status(404).json({ message: "Not Found" });
+
         res.json(updateddata);
+
+
+
     }
+
     catch (err) {
+
         console.log(err);
         res.status(500).json({ message: err.message });
 
     }
-
-
-})
+});
 
 module.exports = router;
- 

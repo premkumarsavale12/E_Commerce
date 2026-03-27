@@ -1,8 +1,7 @@
 
 const mongoose = require('mongoose');
 
-
-const ShopProduct = new mongoose.Schema({
+const Collection = new mongoose.Schema({
     Image: {
         type: String,
         required: true,
@@ -15,5 +14,5 @@ const ShopProduct = new mongoose.Schema({
 
     },
 })
-module.exports = mongoose.model("Shop", ShopProduct);
+module.exports = mongoose.model("Collection", Collection);
  

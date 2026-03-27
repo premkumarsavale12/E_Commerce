@@ -10,12 +10,17 @@ const connectDb = require("./config/db");
 const herosectionRoutes = require("./routes/herosection");
 const sellerRoutes = require("./routes/sellerProduct");
 const footerRoute = require("./routes/footersection")
-const section_1 = require("./routes/section_1")
-const section_2 = require("./routes/section_2")
+const section_1 = require("./routes/section_1");
+const section_2 = require("./routes/section_2");
 const new_launch = require("./routes/new_launch");
-const Shop = require("./routes/shop")
-const Category = require("./routes/category")
-const Concern = require("./routes/concern")
+const Collection = require("./routes/collection");
+const Category = require("./routes/category");
+const Concern = require("./routes/concern");
+const body = require("./routes/body");
+const skin = require("./routes/skin");
+const hair = require("./routes/hair");
+const lip = require("./routes/lip");
+
 const app = express();
 
 connectDb();
@@ -46,11 +51,19 @@ app.use("/api/section_2", section_2);
 
 app.use("/api/new_launch", new_launch);
 
-app.use("/api/shop", Shop);
+app.use("/api/collection", Collection);
 
 app.use("/api/category", Category);
 
 app.use("/api/concern", Concern);
+
+app.use("/api/body", body);
+
+app.use("/api/skin", skin);
+
+app.use("/api/hair", hair);
+
+app.use("/api/lip", lip);
 
 
 app.listen(5000, () => {

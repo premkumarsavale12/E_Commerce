@@ -27,7 +27,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-[14px] font-medium">
-          <Link to="/shop" className="hover:text-gray-500 transition-colors">Shop</Link>
+          <Link to="/collection" className="hover:text-gray-500 transition-colors">Shop</Link>
           <a href="#" className="hover:text-gray-500">Best Sellers</a>
           <a href="#" className="hover:text-gray-500">Skin & Body Care</a>
           <a href="#" className="hover:text-gray-500">Baby Care</a>
@@ -55,7 +55,7 @@ export default function Navbar() {
 
       {isOpen && (
         <div className="md:hidden px-6 pb-4 flex flex-col gap-4 text-sm font-medium">
-          <Link to="/shop" onClick={() => setIsOpen(false)} className="hover:text-gray-500">Shop</Link>
+          <Link to="/collection" onClick={() => setIsOpen(false)} className="hover:text-gray-500">Shop</Link>
           <a href="#">Best Sellers</a>
           <a href="#">Skin & Body Care</a>
           <a href="#">Baby Care</a>
