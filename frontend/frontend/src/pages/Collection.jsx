@@ -28,8 +28,8 @@ const Collection = () => {
 
         if (name.includes("body")) {
             navigate("/body");
-        } else if (name.includes("new") || name.includes("launch")) {
-            navigate("/new-launch");
+        } else if (name.includes("skin") || name.includes("launch")) {
+            navigate("/skin");
         } else if (name.includes("seller") || name.includes("best")) {
             navigate("/best-seller");
         } else if (name.includes("category")) {

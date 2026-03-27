@@ -11,6 +11,7 @@ import Seller_Product from "./pages/Seller_Product";
 import Category from "./pages/Category";
 import Concern from "./pages/Concern";
 import PageLayout from "./component/PageLayout";
+import SkinProduct from "./pages/Skin";
 
 const App = () => {
   return (
@@ -45,6 +46,17 @@ const App = () => {
           <ProtectedRoute>
             <PageLayout>
               <Body />
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
+
+           <Route
+        path="/skin"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <SkinProduct/>
             </PageLayout>
           </ProtectedRoute>
         }
