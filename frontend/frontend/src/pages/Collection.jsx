@@ -25,7 +25,7 @@ const Collection = () => {
     const handleCardClick = (itemName) => {
         if (!itemName) return;
         const name = itemName.toLowerCase();
-        
+
         if (name.includes("body")) {
             navigate("/body");
         } else if (name.includes("new") || name.includes("launch")) {
@@ -54,8 +54,8 @@ const Collection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
                     {data.length > 0 ? (
                         data.map((item, index) => (
-                            <div 
-                                key={index} 
+                            <div
+                                key={index}
                                 className="group cursor-pointer"
                                 onClick={() => handleCardClick(item.Image_Name)}
                             >
@@ -84,4 +84,4 @@ const Collection = () => {
     );
 };
 
-export default Collection;
+export default Collection;
