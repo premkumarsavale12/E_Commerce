@@ -13,7 +13,7 @@ const footerRoute = require("./routes/footersection")
 const section_1 = require("./routes/section_1")
 const section_2 = require("./routes/section_2")
 const new_launch = require("./routes/new_launch");
-const Shop = require("./routes/shop")
+const Collection = require("./routes/collection")
 const Category = require("./routes/category")
 const Concern = require("./routes/concern")
 const app = express();
@@ -46,7 +46,7 @@ app.use("/api/section_2", section_2);
 
 app.use("/api/new_launch", new_launch);
 
-app.use("/api/shop", Shop);
+app.use("/api/collection", Collection);
 
 app.use("/api/category", Category);
 

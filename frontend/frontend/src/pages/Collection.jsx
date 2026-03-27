@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../component/Navbar";
 import Footer from "./Footer";
 
-const Shop = () => {
+const Collection = () => {
 
     const [data, setData] = useState([]);
 
@@ -13,7 +13,7 @@ const Shop = () => {
 
     const FetchApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/shop/all");
+            const res = await axios.get("http://localhost:5000/api/collection/all");
             console.log("API Response:", res.data);
             setData(res.data);
         } catch (err) {
@@ -59,4 +59,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default Collection;

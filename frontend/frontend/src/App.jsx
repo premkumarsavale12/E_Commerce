@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import "./App.css";
 import ProtectedRoute from "./component/ProtectedRoute";
 import PublicRoute from "./component/PublicRoute";
-import Shop from "./pages/Shop";
+import Collection from "./pages/Collection";
 
 
 const App = () => {
@@ -27,10 +27,10 @@ const App = () => {
         }
       />
       <Route
-        path="/shop"
+        path="/collection"
         element={
           <ProtectedRoute>
-            <Shop />
+            <Collection />
           </ProtectedRoute>
         }
       />

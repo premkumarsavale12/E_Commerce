@@ -3,7 +3,7 @@ const express = require("express")
 
 const router = express.Router();
 
-const Shop = require("../model/shop");
+const Collection = require("../model/collection");
 
 
 // for get all  
@@ -12,7 +12,7 @@ router.get("/all", async (req, res) => {
 
     try {
 
-        const data = await Shop.find();
+        const data = await Collection.find();
 
         res.json(data);
 
@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
 
     try {
 
-        const data = await Shop.findById(req.params.id);
+        const data = await Collection.findById(req.params.id);
         res.json(data);
 
     }
@@ -51,7 +51,7 @@ router.get("/:id", async (req, res) => {
 router.post("/add", async (req, res) => {
 
     try {
-        const savedata = await Shop.create(req.body);
+        const savedata = await Collection.create(req.body);
         res.status(201).json(savedata)
     }
 
@@ -71,7 +71,7 @@ router.delete("/:id", async (req, res) => {
 
     try {
 
-        const deletedata = await Shop.findByIdAndDelete(req.params.id);
+        const deletedata = await Collection.findByIdAndDelete(req.params.id);
 
         if (!deletedata) return res.status(404).json({ message: "Shop item not found" })
 
@@ -94,7 +94,7 @@ router.put("/:id", async (req, res) => {
 
     try {
 
-        const updateddata = await Shop.findByIdAndUpdate(
+        const updateddata = await Collection.findByIdAndUpdate(
             req.params.id,
             req.body,
             { new: true }
@@ -112,4 +112,3 @@ router.put("/:id", async (req, res) => {
 })
 
 module.exports = router;
- 
