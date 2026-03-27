@@ -42,7 +42,7 @@ export default function BodyProducts() {
 
         if (selectedPrice) {
             temp = temp.filter((item) => {
-                // Ensure price is a clean number for comparison
+           
                 const priceValue = parseFloat(
                     item.Price?.toString().replace(/[^0-9.]/g, "")
                 );

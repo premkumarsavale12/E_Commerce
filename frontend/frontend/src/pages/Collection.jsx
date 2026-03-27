@@ -34,6 +34,8 @@ const Collection = () => {
             navigate("/hair-product");
         } else if (name.includes("lip")) {
             navigate("/lip");
+        } else if (name.includes("best_seller") || name.includes("best-seller") || name.includes("best seller") || name.includes("bestseller")) {
+            navigate("/best_seller");
         } else if (name.includes("concern")) {
             navigate("/concern");
         } else {

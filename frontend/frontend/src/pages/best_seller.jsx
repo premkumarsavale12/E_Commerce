@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function HairProducts() {
+export default function Best_seller() {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
@@ -18,7 +18,7 @@ export default function HairProducts() {
 
     const FetchApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/hair/all");
+            const res = await axios.get("http://localhost:5000/api/best_seller/all");
             setData(res.data);
             setFilteredData(res.data);
         } catch (err) {
@@ -42,7 +42,7 @@ export default function HairProducts() {
 
         if (selectedPrice) {
             temp = temp.filter((item) => {
-             
+
                 const priceValue = parseFloat(
                     item.Price?.toString().replace(/[^0-9.]/g, "")
                 );
@@ -70,7 +70,7 @@ export default function HairProducts() {
             {/* LEFT SIDE PRODUCTS */}
             <div className="w-full md:w-3/4 p-6">
                 <header className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold">Hair Products</h2>
+                    <h2 className="text-2xl font-bold">best Seller Products</h2>
                     <p className="text-gray-500 text-sm">
                         Showing {filteredData.length} products
                     </p>
@@ -126,8 +126,8 @@ export default function HairProducts() {
                         </button>
                     </div>
                 )}
-            </div>  
-                                                         
+            </div>
+
             {/* RIGHT SIDE FILTERS */}
             <div className="w-full md:w-1/4 p-6 bg-gray-50 border-l border-gray-200 sticky top-0 h-fit">
                 <div className="flex items-center justify-between mb-6">
