@@ -13,6 +13,7 @@ import PageLayout from "./component/PageLayout";
 import SkinProduct from "./pages/Skin";
 import HairProduct from "./pages/Hair";
 import LipProduct from "./pages/Lip";
+import Best_seller from "./pages/best_seller";  
 
 const App = () => {
   return (
@@ -72,7 +73,7 @@ const App = () => {
           </ProtectedRoute>
         }
       />
-    <Route
+      <Route
         path="/lip"
         element={
           <ProtectedRoute>
@@ -92,6 +93,20 @@ const App = () => {
           </ProtectedRoute>
         }
       />
+
+
+      <Route
+        path="/best_seller"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+          <Best_seller />
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
+
+
       <Route
         path="/category"
         element={

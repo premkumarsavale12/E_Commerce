@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function LipProduct() {
+export default function Best_seller() {
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
@@ -18,7 +18,7 @@ export default function LipProduct() {
 
     const FetchApiData = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/lip/all");
+            const res = await axios.get("http://localhost:5000/api/best_seller/all");
             setData(res.data);
             setFilteredData(res.data);
         } catch (err) {
@@ -42,6 +42,7 @@ export default function LipProduct() {
 
         if (selectedPrice) {
             temp = temp.filter((item) => {
+
                 const priceValue = parseFloat(
                     item.Price?.toString().replace(/[^0-9.]/g, "")
                 );
@@ -69,7 +70,7 @@ export default function LipProduct() {
             {/* LEFT SIDE PRODUCTS */}
             <div className="w-full md:w-3/4 p-6">
                 <header className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold">Lip Products</h2>
+                    <h2 className="text-2xl font-bold">best Seller Products</h2>
                     <p className="text-gray-500 text-sm">
                         Showing {filteredData.length} products
                     </p>
@@ -144,10 +145,10 @@ export default function LipProduct() {
                 {/* CATEGORY FILTER */}
                 <div className="mb-8">
                     <h4 className="font-semibold text-sm text-gray-600 uppercase tracking-wider mb-4 font-sans">
-                        Lip Type
+                        Skin Concern
                     </h4>
 
-                    {["Balm", "Gloss", "Stick", "Serum", "Treatment"].map((cat) => (
+                    {["Acne", "Dry", "Pigmentation", "Odor"].map((cat) => (
                         <label
                             key={cat}
                             className="flex items-center gap-3 text-sm mb-3 cursor-pointer group"
