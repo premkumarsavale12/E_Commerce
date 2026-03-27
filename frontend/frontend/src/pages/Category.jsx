@@ -15,7 +15,6 @@ const Category = () => {
 
         try {
             const res = await axios.get("http://localhost:5000/api/category/all");
-            console.log(res.data);
             setData(res.data);
 
         }

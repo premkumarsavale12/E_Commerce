@@ -17,10 +17,7 @@ const Section_2 = () => {
 
             const res = await axios.get("http://localhost:5000/api/section_2/all");
 
-            console.log(res.data);
-
             setData(res.data);
-
 
         }
         catch (err) {
