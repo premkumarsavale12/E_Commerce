@@ -30,8 +30,8 @@ const Collection = () => {
             navigate("/body");
         } else if (name.includes("skin") || name.includes("launch")) {
             navigate("/skin");
-        } else if (name.includes("seller") || name.includes("best")) {
-            navigate("/best-seller");
+        } else if (name.includes("hair-rpoduct") || name.includes("hair")) {
+            navigate("/hair-product");
         } else if (name.includes("category")) {
             navigate("/category");
         } else if (name.includes("concern")) {

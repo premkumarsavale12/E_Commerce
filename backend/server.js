@@ -18,6 +18,7 @@ const Category = require("./routes/category");
 const Concern = require("./routes/concern");
 const body = require("./routes/body");
 const skin = require("./routes/skin");
+const hair = require("./routes/hair");
 
 const app = express();
 
@@ -58,6 +59,8 @@ app.use("/api/concern", Concern);
 app.use("/api/body", body);
 
 app.use("/api/skin", skin);
+
+app.use("/api/hair", hair);
 
 
 app.listen(5000, () => {

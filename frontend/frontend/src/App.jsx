@@ -6,12 +6,12 @@ import ProtectedRoute from "./component/ProtectedRoute";
 import PublicRoute from "./component/PublicRoute";
 import Collection from "./pages/Collection";
 import Body from "./pages/Body";
-import New_Launch from "./pages/New_Launch";
 import Seller_Product from "./pages/Seller_Product";
 import Category from "./pages/Category";
 import Concern from "./pages/Concern";
 import PageLayout from "./component/PageLayout";
 import SkinProduct from "./pages/Skin";
+import HairProduct from "./pages/Hair";
 
 const App = () => {
   return (
@@ -51,22 +51,22 @@ const App = () => {
         }
       />
 
-           <Route
+      <Route
         path="/skin"
         element={
           <ProtectedRoute>
             <PageLayout>
-              <SkinProduct/>
+              <SkinProduct />
             </PageLayout>
           </ProtectedRoute>
         }
       />
       <Route
-        path="/new-launch"
+        path="/hair-product"
         element={
           <ProtectedRoute>
             <PageLayout>
-              <New_Launch />
+              <HairProduct />
             </PageLayout>
           </ProtectedRoute>
         }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function SkinProduct() {
+export default function HairProduct() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export default function SkinProduct() {
     const FetchApiData = async () => {
         try {
 
-            const res = await axios.get("http://localhost:5000/api/skin/all");
+            const res = await axios.get("http://localhost:5000/api/hair/all");
             console.log(res.data)
             setData(res.data);
         }
@@ -27,7 +27,7 @@ export default function SkinProduct() {
         <div className="flex max-w-[1300px] mx-auto">
             {/* LEFT SIDE PRODUCTS */}
             <div className="w-full md:w-3/4 p-6">
-                <h2 className="text-2xl font-semibold mb-6">Skin  Products</h2>
+                <h2 className="text-2xl font-semibold mb-6">Hair  Products</h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {data.map((item) => (
@@ -47,7 +47,7 @@ export default function SkinProduct() {
 
                             <div className="flex items-center gap-2 mb-3">
                                 <span className="font-semibold text-black">
-                                     {item.Price}
+                                    {item.Price}
                                 </span>
 
                             </div>
