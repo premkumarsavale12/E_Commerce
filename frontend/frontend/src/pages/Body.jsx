@@ -105,7 +105,7 @@ export default function BodyProducts() {
 
                                 <div className="mt-4 flex flex-col gap-3">
                                     <div className="font-bold text-xl text-indigo-600">
-                                        ₹{item.Price}
+                                        {item.Price}
                                     </div>
 
                                     <button className="w-full bg-black text-white py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-medium">
@@ -126,8 +126,8 @@ export default function BodyProducts() {
                         </button>
                     </div>
                 )}
-            </div>
-
+            </div>  
+                                                         
             {/* RIGHT SIDE FILTERS */}
             <div className="w-full md:w-1/4 p-6 bg-gray-50 border-l border-gray-200 sticky top-0 h-fit">
                 <div className="flex items-center justify-between mb-6">
