@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../component/Navbar";
 import Footer from "./Footer";
 
 const Collection = () => {
-
+    const navigate = useNavigate();
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -21,6 +22,26 @@ const Collection = () => {
         }
     };
 
+    const handleCardClick = (itemName) => {
+        if (!itemName) return;
+        const name = itemName.toLowerCase();
+        
+        if (name.includes("body")) {
+            navigate("/body");
+        } else if (name.includes("new") || name.includes("launch")) {
+            navigate("/new-launch");
+        } else if (name.includes("seller") || name.includes("best")) {
+            navigate("/best-seller");
+        } else if (name.includes("category")) {
+            navigate("/category");
+        } else if (name.includes("concern")) {
+            navigate("/concern");
+        } else {
+            // Fallback or generic dynamic route
+            navigate("/body");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-white">
             <Navbar />
@@ -33,7 +54,11 @@ const Collection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
                     {data.length > 0 ? (
                         data.map((item, index) => (
-                            <div key={index} className="group cursor-pointer">
+                            <div 
+                                key={index} 
+                                className="group cursor-pointer"
+                                onClick={() => handleCardClick(item.Image_Name)}
+                            >
                                 <div className="aspect-[3/4] overflow-hidden bg-gray-100 rounded-lg mb-4">
                                     <img
                                         src={item.Image}
@@ -59,4 +84,4 @@ const Collection = () => {
     );
 };
 
-export default Collection;
+export default Collection;

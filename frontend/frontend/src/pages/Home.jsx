@@ -7,7 +7,7 @@ import Section_1 from './Section_1'
 import Section_2 from './Section_2'
 import New_Launch from './New_Launch'
 import Category from './Category'
-import Concern from './concern'
+import Concern from './Concern'
 
 const Home = () => {
 

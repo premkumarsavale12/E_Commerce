@@ -13,9 +13,12 @@ const footerRoute = require("./routes/footersection")
 const section_1 = require("./routes/section_1")
 const section_2 = require("./routes/section_2")
 const new_launch = require("./routes/new_launch");
-const Collection = require("./routes/collection")
-const Category = require("./routes/category")
-const Concern = require("./routes/concern")
+const Collection = require("./routes/collection");
+const Category = require("./routes/category");
+const Concern = require("./routes/concern");
+const body = require("./routes/body");
+
+
 const app = express();
 
 connectDb();
@@ -52,6 +55,7 @@ app.use("/api/category", Category);
 
 app.use("/api/concern", Concern);
 
+app.use("/api/body", body);
 
 app.listen(5000, () => {
     console.log("Server Running on port 5000");
