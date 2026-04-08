@@ -33,7 +33,8 @@ export default function Navbar() {
           <Link to="/baby_care" className="hover:text-gray-500 transition-colors">Baby Care</Link>
 
           <a href="#" className="hover:text-gray-500">Hair Care</a>
-          <a href="#" className="hover:text-gray-500">AI Assistants</a>
+
+          <Link to="/ai_assistance" className="hover:text-gray-500 transition-colors">AI Assistants</Link>
           <a href="#" className="hover:text-gray-500">Track Order</a>
         </nav>
 
