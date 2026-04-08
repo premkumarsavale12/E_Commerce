@@ -23,7 +23,7 @@ const upload = multer({ storage: storage });
 
 // for get all
 
-router.get("/", async (req, res) => {
+router.get("/all", async (req, res) => {
     try {
 
         const data = await ai_powered.find();
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
 
     catch (err) {
 
-        res.status(500).return({ message: err.message })
+        res.status(500).json({ message: err.message })
 
     }
 
@@ -58,7 +58,7 @@ router.get("/:id", async (req, res) => {
 });
 
 //for post 
-router.post("/add", upload.single("Image"),  async (req, res) => {
+router.post("/add", upload.single("Image"), async (req, res) => {
 
     try {
         const savedata = await ai_powered.create({
@@ -70,7 +70,7 @@ router.post("/add", upload.single("Image"),  async (req, res) => {
             Image: req.file ? req.file.filename : null,
 
         });
-          res.status(201).json(savedata);
+        res.status(201).json(savedata);
 
     }
     catch (err) {
@@ -80,14 +80,15 @@ router.post("/add", upload.single("Image"),  async (req, res) => {
 
 });
 
-
-router.delete("/:id ", async (req, res) => {
+router.delete("/:id", async (req, res) => {
 
     try {
 
         const deletedata = await ai_powered.findByIdAndDelete(req.params.id);
+
+        if (!deletedata) return res.status(404).json({ message: "Not Found item" });
+
         res.json("Deleted SuccessFully ....");
-        if (!deletedata) return res.status(404).json({ message: "Not Foud item" });
     }
     catch (err) {
 
@@ -96,8 +97,7 @@ router.delete("/:id ", async (req, res) => {
     }
 
 })
-
-router.put("/:id", async (req, res) => {
+router.put("/:id", upload.single("Image"), async (req, res) => {
 
     try {
         const updateddata = await ai_powered.findByIdAndUpdate(
@@ -127,5 +127,5 @@ router.put("/:id", async (req, res) => {
 });
 
 
-module.exports = router;  
+module.exports = router;
 
