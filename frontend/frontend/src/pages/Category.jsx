@@ -20,7 +20,6 @@ const Category = () => {
 
         const name = itemName.toLowerCase();
 
-
         if (name.includes("body")) {
             navigate("/body");
         } else if (name.includes("skin") || name.includes("launch")) {
@@ -36,7 +35,8 @@ const Category = () => {
         } else {
 
             navigate("/body");
-        }
+        } 
+
     };
 
     const FetchApiData = async () => {
