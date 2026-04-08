@@ -29,14 +29,13 @@ router.post("/signup", async (req, res) => {
 
         res.status(201).json({ message: "Signup Successfully " })
 
-    }
+    } 
     catch (err) {
 
         console.log(err);
         res.status(500).send("Server Error");
-    }
+    } 
 });
-
 
 router.post("/login", async (req, res) => {
 

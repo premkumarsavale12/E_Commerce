@@ -29,9 +29,12 @@ const hair = new mongoose.Schema({
     Price: {
         type: String
     },
+
     Button: {
         type: String
     }
 
 });
-module.exports = mongoose.model("hair", hair)
+
+module.exports = mongoose.model("hair", hair)  
+

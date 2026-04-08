@@ -42,7 +42,7 @@ export default function BodyProducts() {
 
         if (selectedPrice) {
             temp = temp.filter((item) => {
-           
+
                 const priceValue = parseFloat(
                     item.Price?.toString().replace(/[^0-9.]/g, "")
                 );
@@ -126,8 +126,8 @@ export default function BodyProducts() {
                         </button>
                     </div>
                 )}
-            </div>  
-                                                         
+            </div>
+
             {/* RIGHT SIDE FILTERS */}
             <div className="w-full md:w-1/4 p-6 bg-gray-50 border-l border-gray-200 sticky top-0 h-fit">
                 <div className="flex items-center justify-between mb-6">
