@@ -15,6 +15,7 @@ import HairProduct from "./pages/Hair";
 import LipProduct from "./pages/Lip";
 import Best_seller from "./pages/best_seller";
 import BabyProduct from "./pages/baby_care";
+import Ai_assistance from "./pages/Ai_assistance";
 
 const App = () => {
   return (
@@ -118,6 +119,16 @@ const App = () => {
         }
       />
 
+      <Route
+        path="/ai_assistance"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <Ai_assistance />
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/category"
         element={

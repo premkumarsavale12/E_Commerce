@@ -3,10 +3,9 @@ const express = require("express");
 
 const router = express.Router();
 
-const baby_care = require("../model/baby_care");
+const skin_insight = require("../model/skin_insights");
 
 const multer = require("multer");
-
 // multer setup
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,16 +17,15 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
-
 // for get all 
 
 router.get("/all", async (req, res) => {
 
     try {
 
-        const data = await baby_care.find();
+        const data = await skin_insight.find();
         res.json(data);
+
     }
 
     catch (err) {
@@ -38,14 +36,14 @@ router.get("/all", async (req, res) => {
 
 });
 
-
-// for get id  
+// for get id 
 
 router.get("/:id", async (req, res) => {
 
+
     try {
 
-        const data = await baby_care.findById(req.params.id);
+        const data = await skin_insight.findById(req.params.id);
         res.json(data);
 
     }
@@ -58,23 +56,25 @@ router.get("/:id", async (req, res) => {
 
 });
 
-//for add  
+//for add 
+
 
 router.post("/add", upload.single("Image"), async (req, res) => {
 
     try {
 
-        const savedata = await baby_care.create({
+        const savedata = await skin_insight.create({
+
+
             Image: req.file ? req.file.filename : null,
-            Image_Name: req.body.Image_Name,
-            Image_Description: req.body.Image_Description,
-            Price: req.body.Price,
-            Button: req.body.Button
+            Heading: req.body.Heading,
+            Description: req.body.Description,
+            Button: req.body.Button,
+            Paragraph: req.body.Paragraph
 
         });
 
         res.status(201).json(savedata);
-
     }
 
     catch (err) {
@@ -83,19 +83,18 @@ router.post("/add", upload.single("Image"), async (req, res) => {
 
     }
 
-});
+})
 
-
-// for delete 
+//for deleted 
 
 router.delete("/:id", async (req, res) => {
 
+
     try {
+        const deletedata = await skin_insight.findByIdAndDelete(req.params.id);
+        res.json("Deleted SuccessFully...");
 
-
-        const deletedata = await baby_care.findByIdAndDelete(req.params.id);
-        res.json("Deleted SuccessFully ....");
-        if (!deletedata) return res.status(404).json({ message: "Not Foud item" });
+        if (!deletedata) return res.status(404).json({ message: "Not Found Item " });
 
     }
 
@@ -105,22 +104,25 @@ router.delete("/:id", async (req, res) => {
 
     }
 
+
 });
 
-
-// for updated  
+// for updated 
 
 router.put("/:id", upload.single("Image"), async (req, res) => {
 
     try {
 
-        const updateddata = await baby_care.findByIdAndUpdate(
+        const updateddata = await skin_insight.findByIdAndUpdate(
+
             req.params.id,
+
             {
-                Image_Name: req.body.Image_Name,
-                Image_Description: req.body.Image_Description,
-                Price: req.body.Price,
+
+                Heading: req.body.Heading,
+                Description: req.body.Description,
                 Button: req.body.Button,
+                Paragraph: req.body.Paragraph,
                 ...(req.file && { Image: req.file.filename })
 
             },
@@ -131,8 +133,6 @@ router.put("/:id", upload.single("Image"), async (req, res) => {
 
         if (!updateddata) return res.status(404).json({ message: "Not Found" });
 
-        res.json(updateddata);
-
     }
 
     catch (err) {
@@ -141,8 +141,7 @@ router.put("/:id", upload.single("Image"), async (req, res) => {
 
     }
 
-
-});
-
+})
 
 module.exports = router;
+
