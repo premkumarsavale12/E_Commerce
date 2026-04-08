@@ -1,16 +1,7 @@
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const hair = new mongoose.Schema({
-
-    Heading: {
-        type: String
-    },
-
-    Paragraph: {
-        type: String,
-
-    },
+const baby_care = new mongoose.Schema({
 
     Image: {
         type: String,
@@ -34,7 +25,10 @@ const hair = new mongoose.Schema({
         type: String
     }
 
-});
+    
 
-module.exports = mongoose.model("hair", hair)  
+})
 
+
+module.exports = mongoose.model("baby_care", baby_care);
+ 

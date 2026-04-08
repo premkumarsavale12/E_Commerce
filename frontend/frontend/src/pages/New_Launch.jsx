@@ -12,7 +12,7 @@ const New_Launch = () => {
     const FetchApiData = async () => {
         try {
             const res = await axios.get("http://localhost:5000/api/new_launch/all");
-            console.log(res.data);
+     
             setData(res.data);
         } catch (err) {
             console.log(err);

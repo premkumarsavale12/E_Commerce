@@ -17,8 +17,6 @@ const Section_1 = () => {
 
             const res = await axios.get("http://localhost:5000/api/section_1/all");
 
-            console.log(res.data);
-
             setData(res.data);
 
         }

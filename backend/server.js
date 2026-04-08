@@ -21,6 +21,7 @@ const skin = require("./routes/skin");
 const hair = require("./routes/hair");
 const lip = require("./routes/lip");
 const best_seller = require("./routes/best_seller");
+const baby_care = require("./routes/baby_care")
 
 const app = express();
 
@@ -67,6 +68,8 @@ app.use("/api/hair", hair);
 app.use("/api/lip", lip);
 
 app.use("/api/best_seller", best_seller);
+
+app.use("/api/baby_care",baby_care)
 
 app.listen(5000, () => {
     console.log("Server Running on port 5000");

@@ -1,27 +1,26 @@
- 
+   const express = require("express");
+   const router = express.Router();
   
-  
-  const express = require("express");
-  const router = express.Router();
-  
-  const best_Seller = require("../model/best_seller");
+   const best_Seller = require("../model/best_seller");
   
   // for get all 
   
-  router.get("/all", async (req, res) => {
+   router.get("/all", async (req, res) => {
   
       try {
   
           const data = await best_Seller.find();
-          res.json(data);
-      }
-  
+           res.json(data);
+      }  
+   
       catch (err) {
   
           res.status(500).json({ message: err.message });
   
-      }
-  });
+      }  
+
+  }); 
+  
   
   // for get  by id 
   
