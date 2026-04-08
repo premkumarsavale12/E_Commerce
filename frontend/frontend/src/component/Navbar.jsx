@@ -30,7 +30,8 @@ export default function Navbar() {
           <Link to="/collection" className="hover:text-gray-500 transition-colors">Shop</Link>
           <Link to="/best_seller" className="hover:text-gray-500 transition-colors">Best Sellers</Link>
           <a href="#" className="hover:text-gray-500">Skin & Body Care</a>
-          <a href="#" className="hover:text-gray-500">Baby Care</a>
+          <Link to="/baby_care" className="hover:text-gray-500 transition-colors">Baby Care</Link>
+
           <a href="#" className="hover:text-gray-500">Hair Care</a>
           <a href="#" className="hover:text-gray-500">AI Assistants</a>
           <a href="#" className="hover:text-gray-500">Track Order</a>
@@ -59,6 +60,7 @@ export default function Navbar() {
           <Link to="/best_seller" onClick={() => setIsOpen(false)} className="hover:text-gray-500">Best Sellers</Link>
           <a href="#">Skin & Body Care</a>
           <a href="#">Baby Care</a>
+
           <a href="#">Hair Care</a>
           <a href="#">AI Assistants</a>
           <a href="#">Track Order</a>

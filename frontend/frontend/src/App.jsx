@@ -13,7 +13,8 @@ import PageLayout from "./component/PageLayout";
 import SkinProduct from "./pages/Skin";
 import HairProduct from "./pages/Hair";
 import LipProduct from "./pages/Lip";
-import Best_seller from "./pages/best_seller";  
+import Best_seller from "./pages/best_seller";
+import BabyProduct from "./pages/baby_care";
 
 const App = () => {
   return (
@@ -100,12 +101,22 @@ const App = () => {
         element={
           <ProtectedRoute>
             <PageLayout>
-          <Best_seller />
+              <Best_seller />
             </PageLayout>
           </ProtectedRoute>
         }
       />
 
+      <Route
+        path="/baby_care"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <BabyProduct />
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
 
       <Route
         path="/category"
