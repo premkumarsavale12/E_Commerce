@@ -5,7 +5,8 @@ const Skin_analysis = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        FetchApiData();
+        FetchApiData(); 
+        
     }, []);
 
     async function FetchApiData() {
@@ -17,7 +18,8 @@ const Skin_analysis = () => {
         }
     }
 
-    return (
+    return ( 
+
         <div className="bg-gray-100 py-16 px-4 text-center">
 
             <h1 className="text-3xl md:text-4xl font-semibold mb-16">

@@ -22,7 +22,7 @@ const Home = () => {
 
             <Section_1 />
             <Section_2 />
-
+       
             <Category />
 
             <Concern />
