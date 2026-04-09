@@ -26,6 +26,8 @@ const skin_insights = require("./routes/skin_insights");
 const Ai_Powered = require("./routes/ai_powered");
 const Faq = require("./routes/Faq");
 const skin_analysis = require("./routes/skin_analysis");
+const ai_skin_works = require("./routes/ai_skin_works");
+
 
 
 
@@ -85,6 +87,9 @@ app.use("/api/ai_powered", Ai_Powered);
 app.use("/api/faq", Faq);
 
 app.use("/api/skin_analysis", skin_analysis);
+
+app.use("/api/ai_skin_works", ai_skin_works);
+
 
 
 
