@@ -24,6 +24,8 @@ const best_seller = require("./routes/best_seller");
 const baby_care = require("./routes/baby_care");
 const skin_insights = require("./routes/skin_insights");
 const Ai_Powered = require("./routes/ai_powered");
+const Faq = require("./routes/Faq");
+
 
 
 const app = express();
@@ -78,8 +80,12 @@ app.use("/api/skin_insights", skin_insights);
 
 app.use("/api/ai_powered", Ai_Powered);
 
+app.use("/api/faq", Faq);
+
 
 app.listen(5000, () => {
     console.log("Server Running on port 5000");
 
-})
+});
+
+
