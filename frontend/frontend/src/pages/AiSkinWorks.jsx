@@ -8,10 +8,10 @@ const AiSkinWorks = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Try fetching from /all to be safe, or handle array from root
+             
                 const res = await axios.get('http://localhost:5000/api/ai_skin_works/all');
                 if (Array.isArray(res.data)) {
-                    setData(res.data[0]); // Take the first section
+                    setData(res.data[0]); 
                 } else {
                     setData(res.data);
                 }
@@ -34,7 +34,7 @@ const AiSkinWorks = () => {
     return (
         <section className="bg-black text-white py-16 px-4">
             <div className="max-w-6xl mx-auto text-center">
-                {/* Heading Area */}
+            
                 <div className="mb-6">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 uppercase tracking-[0.2em] border border-gray-600 inline-block px-12 py-3 bg-black">
                         {data.Heading || "How AI works"}
@@ -51,7 +51,7 @@ const AiSkinWorks = () => {
                     {data.Description || "Detect and analyze your skin strengths and areas of focus across 9 different skin concerns, such as"}
                 </p>
 
-                {/* Tabs Row */}
+             
                 <div className="flex flex-wrap justify-center gap-2 mb-12 border border-white/20 p-4 rounded-sm bg-black/50">
                     {data.Concerns && data.Concerns.map((concern, index) => (
                         <button
@@ -68,7 +68,7 @@ const AiSkinWorks = () => {
                     ))}
                 </div>
 
-                {/* Image Comparison Area */}
+          
                 <div className="relative w-full max-w-5xl mx-auto aspect-[16/10] md:aspect-[21/9] overflow-hidden border-2 border-red-900/50 shadow-2xl shadow-red-900/10">
                     {data.Concerns && data.Concerns[activeTab] && (
                         <div className="flex w-full h-full">
