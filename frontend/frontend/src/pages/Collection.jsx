@@ -15,7 +15,7 @@ const Collection = () => {
     const FetchApiData = async () => {
         try {
             const res = await axios.get("http://localhost:5000/api/collection/all");
-            console.log("API Response:", res.data);
+       
             setData(res.data);
         } catch (err) {
             console.error("Error fetching shop data:", err);
