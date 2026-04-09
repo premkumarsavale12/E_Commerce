@@ -17,6 +17,8 @@ import Best_seller from "./pages/best_seller";
 import BabyProduct from "./pages/baby_care";
 import Ai_assistance from "./pages/Ai_assistance";
 
+import ProductDetails from "./pages/ProductDetails";
+
 const App = () => {
   return (
     <Routes>
@@ -149,7 +151,18 @@ const App = () => {
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/product/:id"
+        element={
+          <ProtectedRoute>
+            <PageLayout>
+              <ProductDetails />
+            </PageLayout>
+          </ProtectedRoute>
+        }
+      />
     </Routes>
+
   );
 };
 

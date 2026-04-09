@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Best_seller() {
     const [data, setData] = useState([]);
@@ -79,15 +80,16 @@ export default function Best_seller() {
                 {filteredData.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredData.map((item) => (
-                            <div
+                            <Link
+                                to={`/product/${item._id}`}
                                 key={item._id}
-                                className="border rounded-xl p-4 shadow-sm hover:shadow-lg transition-shadow bg-white flex flex-col h-full"
+                                className="border rounded-xl p-4 shadow-sm hover:shadow-lg transition-all bg-white flex flex-col h-full group"
                             >
                                 <div className="h-48 flex items-center justify-center overflow-hidden mb-4">
                                     <img
                                         src={item.Image}
                                         alt={item.Image_Name}
-                                        className="max-h-full object-contain hover:scale-105 transition-transform duration-300"
+                                        className="max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                                         onError={(e) => {
                                             e.target.src = "https://via.placeholder.com/200?text=No+Image";
                                         }}
@@ -95,7 +97,7 @@ export default function Best_seller() {
                                 </div>
 
                                 <div className="flex-grow">
-                                    <h3 className="font-semibold text-lg line-clamp-1">
+                                    <h3 className="font-semibold text-lg line-clamp-1 group-hover:text-indigo-600 transition-colors">
                                         {item.Image_Name}
                                     </h3>
                                     <p className="text-gray-500 text-xs mt-1 line-clamp-2">
@@ -112,10 +114,11 @@ export default function Best_seller() {
                                         {item.Button || "Add to Cart"}
                                     </button>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 ) : (
+
                     <div className="flex flex-col items-center justify-center py-20 text-gray-400">
                         <p className="text-xl">No products match your filters</p>
                         <button

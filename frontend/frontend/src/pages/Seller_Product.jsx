@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Seller_Product = () => {
 
@@ -12,7 +13,7 @@ const Seller_Product = () => {
     const FetchApiData = async () => {
         try {
             const res = await axios.get("http://localhost:5000/api/sellerproduct/all");
-          
+
             setData(res.data);
         } catch (err) {
             console.log(err);
@@ -30,17 +31,18 @@ const Seller_Product = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
                     {data.map((item, index) => (
-                        <div
+                        <Link
+                            to={`/product/${item._id}`}
                             key={index}
-                            className="bg-white p-4 shadow rounded-lg hover:shadow-lg transition duration-300"
+                            className="bg-white p-4 shadow rounded-lg hover:shadow-lg transition duration-300 group block"
                         >
                             <img
                                 src={item.Image}
                                 alt={item.Image_Name}
-                                className="w-full h-[200px] sm:h-[220px] md:h-[240px] object-contain mb-4"
+                                className="w-full h-[200px] sm:h-[220px] md:h-[240px] object-contain mb-4 group-hover:scale-105 transition-transform duration-300"
                             />
 
-                            <h3 className="text-base sm:text-lg font-medium">
+                            <h3 className="text-base sm:text-lg font-medium group-hover:text-indigo-600 transition-colors">
                                 {item.Image_Name}
                             </h3>
 
@@ -49,19 +51,22 @@ const Seller_Product = () => {
                             </p>
 
                             <p className="text-black font-semibold mt-2 text-sm sm:text-base">
-                                ₹ {item.price}
+                                ₹ {item.price || item.Price}
                             </p>
 
                             <button className="mt-4 w-full bg-black text-white py-2 text-sm sm:text-base hover:bg-gray-800 transition">
+
                                 Select Size
+
                             </button>
 
-                        </div>
+
+                        </Link>
                     ))}
 
                 </div>
             </div>
-          
+
         </>
     );
 };

@@ -19,7 +19,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
 // for get all 
 
 router.get("/all", async (req, res) => {
@@ -37,7 +36,6 @@ router.get("/all", async (req, res) => {
     }
 
 });
-
 
 // for get id  
 
@@ -57,6 +55,7 @@ router.get("/:id", async (req, res) => {
     }
 
 });
+
 
 //for add  
 
@@ -84,7 +83,6 @@ router.post("/add", upload.single("Image"), async (req, res) => {
     }
 
 });
-
 
 // for delete 
 
